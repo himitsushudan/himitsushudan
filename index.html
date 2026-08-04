@@ -1,13 +1,62 @@
-HTML
-
-
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Meu Site de Animes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Index</title>
+    <!-- Adicione seus estilos CSS aqui se precisar -->
 </head>
 <body>
-    <h1>Bem-vindo ao meu site!</h1>
-    <p>Em breve, imagens e downloads aqui.</p>
+
+    <!-- Mobile Menu Wrapper -->
+    <div id="slide-menu">
+        <div class="slide-menu-header">
+            <div class="mobile-search">
+                <form class="search-form" action="#" role="search">
+                    <input autocomplete="off" class="search-input" placeholder="Pesquisar..." name="q" value=""/>
+                    <button class="search-action" type="submit"></button>
+                </form>
+            </div>
+            <span class="hide-freebify-free-mobile-menu"></span>
+        </div>
+        <div class="slide-menu-flex">
+            <div class="freebify-free-mobile-menu" id="freebify-free-mobile-menu"></div>
+            <div class="mobile-menu-footer">
+                <div class="mobile-navbar-social"></div>
+                <div class="mobile-navbar-menu"></div>
+            </div>
+        </div>
+    </div>
+    <div class="overlay"></div>
+    <a href="javascript:;" id="back-top"></a>
+
+    <!-- Seus scripts limpos entram aqui -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var q = $(window);
+            if (1 == 5 && q.scrollTop() > 0) {
+                var B = $(window).height(),
+                    H = q.scrollTop().toString().length,
+                    K = q.scrollLeft().toString().length,
+                    R = H + K;
+                $(document).ready(function() {
+                    var H = $(window).height();
+                    H < $('#fixedSidebar').scrollTop().toString().length - K &&
+                        (H > R ? q.scrollTop('scrollTop') : H <= 0 && q.scrollTop('scrollTop'),
+                        H > B ? q.scrollTop('scrollTop') : q.scrollTop('scrollTop'),
+                        B = $(window).height());
+                });
+            }
+        });
+
+        $(document).ready(function() {
+            1 == 5 && $(window).resize({
+                fixedMenu: 'fixedMenu',
+                additionalMarginTop: 35,
+                additionalMarginBottom: 35
+            });
+        });
+    </script>
 </body>
 </html>

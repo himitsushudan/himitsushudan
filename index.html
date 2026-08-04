@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Setor de Projetos Resgatados</title>
+    <title>Cronograma e Status - Projetos</title>
     <style>
         body {
             background-color: #f4f4f9;
@@ -16,95 +16,185 @@
         }
         .main-wrapper {
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             background: #ffffff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* ==========================================================
+           PARTE 1: COMPATIBILIDADE E CONFIGURAÇÃO DA TABELA
+           ========================================================== */
+        .tabela-cronograma {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        .tabela-cronograma th {
+            background-color: #302f2f !important;
+            color: #d1ecf1 !important; /* Ajustado para dar contraste bonito no escuro */
+            padding: 14px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .tabela-cronograma td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+            vertical-align: middle;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .tabela-cronograma tr {
+            background-color: #ffffff !important;
+        }
+
+        /* ==========================================================
+           PARTE 2: CARD DO ANIME (ESTILO ÍNDICE UNIFICADO)
+           ========================================================== */
+        .anime-card-tabela {
+            background-color: #1a1a1a; 
+            border-radius: 6px;        
+            overflow: hidden;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            width: 100px;              
+            margin: 0 auto;            
+        }
+
+        .anime-card-tabela:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(255, 74, 90, 0.3);
+        }
+
+        .anime-card-tabela img {
+            width: 100%;
+            height: 120px;             
+            object-fit: cover;
+            background-color: #222;
+            display: block;
+        }
+
+        .anime-card-tabela span {
+            color: #ffffff !important;
+            font-family: Arial, sans-serif;
+            font-size: 11px;           
+            font-weight: bold;
+            padding: 6px 4px;          
+            text-align: center;
+            display: block;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.2;
+        }
+
+        /* ==========================================================
+           PARTE 3: BADGES DE STATUS
+           ========================================================== */
+        .status-tag {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        .tag-traducao { 
+            background: #e8dbff !important; 
+            color: #5a30a3 !important;      
+        }
+        
+        .tag-revisao { 
+            background: #d1ecf1 !important; 
+            color: #0c5460 !important;     
+        }
+        
+        .tag-pausado { 
+            background: #fff3cd !important; 
+            color: #856404 !important;     
+        }
+        
+        .tag-hiato { 
+            background: #f8d7da !important;    
+            color: #721c24 !important;        
         }
     </style>
 </head>
 <body>
 
     <div class="main-wrapper">
-        <div class="projetos-completados-container" style="color: #333333; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 100%; padding: 10px;">
+        <h2 style="color: #302f2f; text-align: center; font-family: Arial, sans-serif; margin-bottom: 20px;">
+            📊 Cronograma e Status dos Projetos
+        </h2>
 
-            <div style="background: rgb(249, 249, 249); border-left: 4px solid rgb(105, 10, 6); border-radius: 4px; margin-bottom: 25px; padding: 15px 20px;">
-                <p style="color: #690a06; font-size: 15px; font-weight: bold; margin: 0px 0px 6px;">
-                    📌 Setor de Projetos Resgatados
-                </p>
-                <p style="color: #555555; font-size: 14px; margin: 0px;">
-                    Essa é uma área específica de animes legendados que foram solicitados no setor de pedidos e que não foram completados por outros fansubbers. Ou seja, faltou legendar algum episódio ou OVA, e nós completamos a jornada!
-                </p>
-            </div>
-
-            <h3 style="color: #222222; font-size: 16px; letter-spacing: 0.5px; margin-bottom: 20px; text-align: center;">
-                ✨ Projetos Disponíveis nesta Seção
-            </h3>
-
-            <div class="projetos-grid" style="display: flex; flex-direction: column; gap: 15px;">
+        <table class="tabela-cronograma">
+            <thead>
+                <tr>
+                    <th style="width: 30%">Projeto</th>
+                    <th style="width: 25%">Episódios</th>
+                    <th style="width: 22%">Status</th>
+                    <th style="width: 23%">Lançamento</th>
+                </tr>
+            </thead>
+            <tbody>
                 
-                <!-- KOUTETSU SANGOKUSHI -->
-                <div style="background: rgb(255, 255, 255); border-radius: 6px; border: 1px solid rgb(224, 224, 224); box-shadow: rgba(0, 0, 0, 0.02) 0px 2px 4px; display: flex; flex-wrap: wrap; overflow: hidden;">
-                    <div style="align-items: center; background: rgb(252, 252, 252); border-right: 1px solid rgb(238, 238, 238); display: flex; flex: 1 1 0%; gap: 15px; min-width: 250px; padding: 12px 15px;">
-                        <img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZb9DFXy2cX4tDmkzFbwDKB2Tyo__rpOrb0YWA8KzBpH2bi3nc6MbYmp3GxZpI6tW3rceKZmYYwwdiwTYbFdevG6WB6olFBVjkmKiu-iYzS5aMRH8uVJOY03JAU2X2EFgu84Wfpy4wxAvpxPagXTrNFiSS0ygcT24D0S6sc-l3X484g1eOrHaQngeMMGes/s1600/card_koutetsu.png" style="border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px; height: auto; width: 100px;" />
-                        <div>
-                            <h4 style="color: #444444; font-size: 14px; font-weight: bold; letter-spacing: 0.5px; margin: 0px;">KOUTETSU SANGOKUSHI</h4>
-                            <span style="color: #888888; font-size: 12px;">Série Completa / Resgatado</span>
-                        </div>
-                    </div>
-                    <div style="align-items: center; display: flex; flex: 1 1 0%; justify-content: center; min-width: 250px; padding: 15px;">
-                        <a href="https://mega.nz/file/5wBiHLDI#IhxtWzXGlN1Oq8pRReRH5fcErS113HW7VjssuZIgG5Q" style="background-color: #690a06; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px; color: white; display: inline-block; font-size: 13px; font-weight: bold; padding: 8px 18px; text-decoration: none;" target="_blank">
-                            📥 Baixar Episódio 26
+                <!-- Linha 1: ZI CHUAN S2 -->
+                <tr>
+                    <td>
+                        <a class="anime-card-tabela" href="#">
+                            <img alt="Zi Chuan S2" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZb9DFXy2cX4tDmkzFbwDKB2Tyo__rpOrb0YWA8KzBpH2bi3nc6MbYmp3GxZpI6tW3rceKZmYYwwdiwTYbFdevG6WB6olFBVjkmKiu-iYzS5aMRH8uVJOY03JAU2X2EFgu84Wfpy4wxAvpxPagXTrNFiSS0ygcT24D0S6sc-l3X484g1eOrHaQngeMMGes/s1600/card_koutetsu.png" />
+                            <span>Zi Chuan S2</span>
                         </a>
-                    </div>
-                </div>
+                    </td>
+                    <td>Episódio 19</td>
+                    <td><span class="status-tag tag-traducao">Em Tradução</span></td>
+                    <td>Sexta-feira</td>
+                </tr>
 
-                <!-- TRICKSTER -->
-                <div style="background: rgb(255, 255, 255); border-radius: 6px; border: 1px solid rgb(224, 224, 224); box-shadow: rgba(0, 0, 0, 0.02) 0px 2px 4px; display: flex; flex-wrap: wrap; overflow: hidden;">
-                    <div style="align-items: center; background: rgb(252, 252, 252); border-right: 1px solid rgb(238, 238, 238); display: flex; flex: 1 1 0%; gap: 15px; min-width: 250px; padding: 12px 15px;">
-                        <img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqN6WJX20BGJzfuF8Q6T8X7RYKAzRwXm0RFylmdTTMkM3EiS7qEGnXtIUPlUILFWSo9YT6qEAa-fbrOCEDj3GDhSW3Elu7J-QOyboZyOqQbUANpfdrEAudMXEBYWkC-YTcaxtFXKQmm2rMDCbR3mW7naFY3GpMkRV9aFp1BHEFHWoiuc-NrveSbe-x3zoX/s1600/card_trickster.png" style="border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px; height: auto; width: 100px;" />
-                        <div>
-                            <h4 style="color: #444444; font-size: 14px; font-weight: bold; letter-spacing: 0.5px; margin: 0px;">TRICKSTER</h4>
-                            <span style="color: #888888; font-size: 12px;">OVAs Especiais / Resgatado</span>
-                        </div>
-                    </div>
-                    <div style="align-items: center; display: flex; flex-wrap: wrap; flex: 1 1 0%; gap: 10px; justify-content: center; min-width: 250px; padding: 15px;">
-                        <a href="https://mega.nz/file/rkQFBbAZ#7YdoXOZ-J545n8d8jEWUZtJES5wHi1cb9ZaJIJqDF6s" style="background-color: #690a06; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px; color: white; display: inline-block; font-size: 12px; font-weight: bold; padding: 8px 14px; text-decoration: none;" target="_blank">
-                            📥 Baixar OVA 01
+                <!-- Linha 2: EM REVISÃO -->
+                <tr>
+                    <td>
+                        <a class="anime-card-tabela" href="#">
+                            <img alt="Anime Exemplo 2" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqN6WJX20BGJzfuF8Q6T8X7RYKAzRwXm0RFylmdTTMkM3EiS7qEGnXtIUPlUILFWSo9YT6qEAa-fbrOCEDj3GDhSW3Elu7J-QOyboZyOqQbUANpfdrEAudMXEBYWkC-YTcaxtFXKQmm2rMDCbR3mW7naFY3GpMkRV9aFp1BHEFHWoiuc-NrveSbe-x3zoX/s1600/card_trickster.png" />
+                            <span>Anime Exemplo 2</span>
                         </a>
-                        <a href="https://mega.nz/file/fgYxDBwZ#Lt1t2vfxh9vKL5XCp_X1haN92eZe1HP4-Dj70Zy254E" style="background-color: #690a06; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px; color: white; display: inline-block; font-size: 12px; font-weight: bold; padding: 8px 14px; text-decoration: none;" target="_blank">
-                            📥 Baixar OVA 02
+                    </td>
+                    <td>Episódio 04</td>
+                    <td><span class="status-tag tag-revisao">Em Revisão</span></td>
+                    <td>Sábado</td>
+                </tr>
+
+                <!-- Linha 3: PAUSADO -->
+                <tr>
+                    <td>
+                        <a class="anime-card-tabela" href="#">
+                            <img alt="Anime Exemplo 3" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxMX79NveEZGw310DfooN3Kabh0_TmWLrQGfxjLOgxp7xp4fxFc4qyueXlNAtEblk62XWWEgAUr6sKUoFAzfjKVxZB4OSg3R1RUxwnJ8Cj94zAAC01Yj_3DtxMttkVOPBhU2AIp_JbCoXn51Aba-WVPHF7oXMiCguhty9WCZpp28S0pmu2d5LBmxfVXyJT/s201/card_brothers.png" />
+                            <span>Anime Exemplo 3</span>
                         </a>
-                    </div>
-                </div>
+                    </td>
+                    <td>Episódio 10</td>
+                    <td><span class="status-tag tag-pausado">Pausado</span></td>
+                    <td>--</td>
+                </tr>
 
-                <!-- BROTHERS CONFLICT -->
-                <div style="background: rgb(255, 255, 255); border-radius: 6px; border: 1px solid rgb(224, 224, 224); box-shadow: rgba(0, 0, 0, 0.02) 0px 2px 4px; display: flex; flex-wrap: wrap; overflow: hidden;">
-                    <div style="align-items: center; background: rgb(252, 252, 252); border-right: 1px solid rgb(238, 238, 238); display: flex; flex: 1 1 0%; gap: 15px; min-width: 250px; padding: 12px 15px;">
-                        <img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxMX79NveEZGw310DfooN3Kabh0_TmWLrQGfxjLOgxp7xp4fxFc4qyueXlNAtEblk62XWWEgAUr6sKUoFAzfjKVxZB4OSg3R1RUxwnJ8Cj94zAAC01Yj_3DtxMttkVOPBhU2AIp_JbCoXn51Aba-WVPHF7oXMiCguhty9WCZpp28S0pmu2d5LBmxfVXyJT/s201/card_brothers.png" style="border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px; height: auto; width: 100px;" />
-                        <div>
-                            <h4 style="color: #444444; font-size: 14px; font-weight: bold; letter-spacing: 0.5px; margin: 0px;">BROTHERS CONFLICT</h4>
-                            <span style="color: #888888; font-size: 12px;">OVAs Especiais / Resgatado</span>
-                        </div>
-                    </div>
-                    <div style="align-items: center; display: flex; flex-wrap: wrap; flex: 1 1 0%; gap: 10px; justify-content: center; min-width: 250px; padding: 15px;">
-                        <a href="SEU_LINK_DO_OVA_01_AQUI" style="background-color: #690a06; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px; color: white; display: inline-block; font-size: 12px; font-weight: bold; padding: 8px 14px; text-decoration: none;" target="_blank">
-                            📥 Baixar OVA 01
-                        </a>
-                        <a href="SEU_LINK_DO_OVA_02_AQUI" style="background-color: #690a06; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px; color: white; display: inline-block; font-size: 12px; font-weight: bold; padding: 8px 14px; text-decoration: none;" target="_blank">
-                            📥 Baixar OVA 02
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <div style="margin-top: 35px; text-align: center;">
-                <img border="0" height="16" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhY9iDX99qr26RD2m9rQ7BsQoxu0-WznPi_pPKv0fPH0fZKy_tMil5-gP2rX9_cbEosBKrefPbnhcULm9KkmcoI-1q666LXccZ8PErGqRQsnMX7CwqEe8pUVpD1liqWF4NFi2iZ7pwWc-AOMUVreKQFJy9SKumQ0NTsgp5oBprBrBt2fY7GCgzjSslfSkIg/s1600/separador.png" width="200" />
-            </div>
-
-        </div>
+            </tbody>
+        </table>
     </div>
 
 </body>
